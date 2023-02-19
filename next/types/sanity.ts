@@ -7,8 +7,11 @@ export interface Product {
   category: Category;
   description: Description[];
   featured: boolean;
+  new: boolean;
+  trending: boolean;
   images: Image[];
   price: number;
+  oldPrice: number;
   sku: string;
   slug: Slug;
   stock: number;
