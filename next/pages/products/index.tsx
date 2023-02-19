@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
-import React, { useEffect } from 'react';
+import ProductsGrid from '../../components/products/ProductsGrid';
 import { Product } from '../../types/sanity';
 import { sanityClient } from '../../utils/sanity/client';
 
@@ -8,10 +8,7 @@ type Props = {
 };
 
 const Products: NextPage<Props> = ({ products }) => {
-  useEffect(() => {
-    console.log(products[0].title);
-  }, [products]);
-  return <div>Products</div>;
+  return <ProductsGrid {...{ products }} />;
 };
 
 export default Products;
