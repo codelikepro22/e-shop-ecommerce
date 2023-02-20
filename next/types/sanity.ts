@@ -6,15 +6,15 @@ export interface Product {
   _updatedAt: Date;
   category: Category;
   description: Description[];
-  featured: boolean;
-  new: boolean;
-  trending: boolean;
+  featured?: boolean;
+  new?: boolean;
+  trending?: boolean;
   images: Image[];
   price: number;
-  oldPrice: number;
-  sku: string;
+  oldPrice?: number;
+  sku?: string;
   slug: Slug;
-  stock: number;
+  stock?: number;
   title: string;
 }
 
