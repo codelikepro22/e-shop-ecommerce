@@ -1,5 +1,7 @@
 import { AppBar, Container, Tab, Tabs } from '@mui/material';
 import { forwardRef, useState } from 'react';
+import { useContextValue } from '../../context/ContextProvider';
+import { ActionType } from '../../types/context';
 import Link from '../../utils/mui/Link';
 
 type LinkTabProps = {
@@ -16,7 +18,10 @@ const LinkTab = forwardRef<HTMLLIElement, LinkTabProps>(
 );
 
 const TabsNav = () => {
-  const [pageTab, setPageTab] = useState(0);
+  const {
+    state: { pageTab },
+    dispatch,
+  } = useContextValue();
   return (
     <AppBar position="sticky">
       <Container>
@@ -26,7 +31,9 @@ const TabsNav = () => {
           textColor="inherit"
           indicatorColor="secondary"
           value={pageTab}
-          onChange={(e, newValue) => setPageTab(newValue)}
+          onChange={(e, newValue) =>
+            dispatch({ type: ActionType.UPDATE_PAGE_TAB, payload: newValue })
+          }
         >
           <LinkTab label="Home" href="/" />
           <LinkTab label="Products" href="/products" />

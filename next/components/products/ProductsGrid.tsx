@@ -16,7 +16,9 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useContextValue } from '../../context/ContextProvider';
+import { ActionType } from '../../types/context';
 import { Product } from '../../types/sanity';
 import { formatEUR } from '../../utils/helpers';
 import Link from '../../utils/mui/Link';
@@ -26,6 +28,10 @@ type Props = {
   products: Product[];
 };
 const ProductsGrid = ({ products }: Props) => {
+  const { dispatch } = useContextValue();
+  useEffect(() => {
+    dispatch({ type: ActionType.UPDATE_PAGE_TAB, payload: 1 });
+  }, [dispatch]);
   const [sorting, setSorting] = useState(' ');
   const [sortedProducts, setSortedProducts] = useState(products);
 
